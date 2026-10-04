@@ -1,0 +1,21 @@
+#include <iostream> //Подключаем библиотеку.
+
+int main() 
+{
+    double radius; //Вводим переменную радиус.
+    double height; //Вводим переменную высота.
+    double volume; //Вводим переменную площадь.
+    double pi = 3.1415926535; //Вводим переменную пи.
+
+    std::cout << "Enter the radius\n"; //Просим ввести радиус.
+    std::cin >> radius; //Считываем его в переменную радиус.
+
+    std::cout << "Enter the height\n"; //Просим ввести высоту.
+    std::cin >> height; //Считываем ее в переменную высота.
+
+    volume = pi * (radius * radius) * height; //Считаем площадь по формуле.
+
+    std::cout << "=" << volume << "\n"; //Выводим отивет на экран.
+
+    return 0; //Закончилось успехом.
+} //Закрываем функцию main.
