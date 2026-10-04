@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cmath> // Подключаем, потому что в задании требуется std::pow
+
+int main() {
+    double x;  // Основание (может быть дробным)
+    int y;  // Показатель степени (целое положительное)
+    double resultLoop = 1.0; // Переменная для результата через цикл
+
+    std::cout << "Enter the base x: "; //просим ввести x
+    std::cin >> x;
+
+    std::cout << "Enter a positive integer y: "; //просим ввести y
+    std::cin >> y;
+
+    // Способ 1: Через цикл 
+    // Умножаем x на себя y раз
+    for (int i = 0; i < y; i++) {
+        resultLoop = resultLoop * x;
+    }
+
+    // Способ 2: Через std::pow 
+    // ВАЖНО: std::pow работает с типом double.
+    // Переменная y у нас int. Чтобы "показать приведение типов", мы пишем (double)y.
+    double resultPow = std::pow(x, (double)y);
+
+    //Вывод результатов
+    std::cout << "\nThe result via a loop: " << resultLoop << "\n";
+    std::cout << "The result via pow:  " << resultPow << "\n";
+
+    // Сравниваем
+    if (resultLoop == resultPow) {
+        std::cout << "The results match!\n";
+    }
+    else {
+        std::cout << "The results are slightly different (due to precision).\n";
+    }
+
+    return 0;
+}
