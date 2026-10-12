@@ -1,0 +1,29 @@
+#include <iostream> // Подключаем библиотеку
+int main() {
+    double a, b, c; // Переменные для сторон треугольника
+    double temp;    // Временная переменная
+    const double EPSILON = 0.000001; // Минимальная разница
+    std::cout << "Enter three numbers (a, b, c): ";     // Запрашиваем три числа
+    std::cin >> a >> b >> c;
+    // Упорядочиваем числа так, чтобы c было самым большим
+    if (a > b) {
+        temp = a; a = b; b = temp;
+    }
+    if (b > c) {     // Если b больше c — меняем их местами (теперь c точно самое большое)
+        temp = b; b = c; c = temp;
+    }
+    // Вычисляем левую и правую части теоремы Пифагора
+    double leftPart = a * a + b * b; 
+    double rightPart = c * c;        
+    double difference = leftPart - rightPart; // Находим разницу между ними
+    if (difference < 0) {     // Модуль разности
+        difference = -difference;
+    }
+    if (difference < EPSILON) {     // Проверяем условие с точностью EPSILON
+        std::cout << "Yes, these numbers can be the sides of a right-angled triangle.\n";
+    }
+    else {
+        std::cout << "No, these numbers cannot be the sides of a right-angled triangle.\n";
+    }
+    return 0; // Успешное завершение программы
+}
