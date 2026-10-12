@@ -1,0 +1,18 @@
+#include <iostream>
+#include <cmath> // Подключаем библиотеку для функции std::sqrt (квадратный корень).
+
+int main()
+{
+	double number; // Переменная для числа.
+	std::cout << "Enter a number:"; // Запрашиваем число у пользователя.
+	std::cin >> number; // Считываем число.
+	if (number > 0) {  // Проверяем условие.
+		double root = std::sqrt(number); // Вычисляем квадратный корень.
+		std::cout << "Square root:" << root << "\n"; // Выводим ответ.
+	}
+	else { // Иначе (если число 0 или отрицательное).
+		double square = number * number; // Квадрат числа.
+		std::cout << "Square of a number:" << square << "\n"; // Выводим ответ.
+	}
+	return 0; // Успешное завершение.
+}
