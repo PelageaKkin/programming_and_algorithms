@@ -1,0 +1,17 @@
+#include <iostream> // Подключаем библиотеку.
+
+int main()
+{
+    double num1, num2, num3; // Переменные для трех чисел.
+    std::cout << "Enter three numbers separated by spaces:"; // Просим ввести три числа.
+    std::cin >> num1 >> num2 >> num3; // Считываем их с клавиатуры.
+
+    double sum = num1 + num2 + num3; // Считам сумму трех чисел.
+    if (sum > 100) { 
+        std::cout << "A large sum\n"; // Выводим текст.
+    }
+    else {
+        std::cout << "The amount:" << sum << "\n"; // Выводим сумму.
+    }
+    return 0; // Успешное завершение.
+}
