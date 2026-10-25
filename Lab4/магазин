@@ -1,0 +1,92 @@
+#include <iostream>
+
+int main() {
+    int category, item, card;
+    int quantity;
+    double totalSum = 0; // Общая сумма в корзине
+    double price = 0;
+
+
+    std::cout << "=== SHOP ===\n";
+    std::cout << "1. Drinks\n";
+    std::cout << "2. Food\n";
+    std::cout << "0. Finish selection\n";
+
+    // Цикл для добавления товаров в корзину
+    while (true) {
+        std::cout << "\nSelect a category (1, 2, or 0 to finish): ";
+        std::cin >> category;
+
+        if (category == 0) {
+            break; // Выход из цикла, если ввели 0
+        }
+
+        // вложенный switch
+        switch (category) {
+        case 1: // Категория: Напитки
+            std::cout << "1. Coffee (150 RUB)\n 2. Tea(100 RUB)\n";
+            std::cout << "Select a product: ";
+            std::cin >> item;
+
+            std::cout << "Quantity: ";
+            std::cin >> quantity;
+
+            switch (item) {
+            case 1: price = 150; break;
+            case 2: price = 100; break;
+            default:
+                std::cout << "Incorrect item!\n";
+                price = 0;
+            }
+            totalSum = totalSum + (price * quantity);
+            break;
+
+        case 2: // Категория: Еда
+            std::cout << "1. Sandwich (200 RUB)\n 2. Hand pie (100 RUB)\n";
+            std::cout << "Select a product: ";
+            std::cin >> item;
+
+            std::cout << "Quantity: ";
+            std::cin >> quantity;
+
+            switch (item) {
+            case 1: price = 200; break;
+            case 2: price = 100; break;
+            default:
+                std::cout << "Incorrect item!\n";
+                price = 0;
+            }
+            totalSum = totalSum + (price * quantity);
+            break;
+
+        default:
+            std::cout << "Incorrect category!\n";
+            break;
+        }
+    }
+
+    std::cout << "\nAmount before discount: " << totalSum << " RUB.\n";
+
+    // Применение скидки
+    std::cout << "Do you have a card? (1 - VIP 10%, 2 - Student 5%, 3 - None): ";
+    std::cin >> card;
+
+    double discount = 0; // 0.1 для 10%, 0.05 для 5%
+
+    switch (card) {
+    case 1: discount = 0.1; break;
+    case 2: discount = 0.05; break;
+    case 3: discount = 0.0; break;
+    default:
+        std::cout << "Invalid card code. No discount..\n";
+        discount = 0.0;
+        break;
+    }
+
+    // Вывод чека
+    double finalSum = totalSum - (totalSum * discount);
+    std::cout << "Final amount after discount: " << finalSum << " RUB.\n";
+    std::cout << "Thank you for your purchase!\n";
+
+    return 0;
+}
