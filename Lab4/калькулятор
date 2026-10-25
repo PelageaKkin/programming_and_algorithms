@@ -1,0 +1,58 @@
+#include <iostream>
+
+int main() {
+    double a, b; 
+    char operation;
+
+    std::cout << "Enter the first number: "; //просим ввести первое число
+    std::cin >> a;
+    std::cout << "Enter an operation (+, -, *, /, ^, %): "; //просим ввести операцию
+    std::cin >> operation;
+    std::cout << "Enter the second number: "; //просим ввести второе число
+    std::cin >> b;
+
+    // Используем switch
+    switch (operation) {
+    case '+':
+        std::cout << "Result: " << a + b << "\n";
+        break;
+    case '-':
+        std::cout << "Result: " << a - b << "\n";
+        break;
+    case '*':
+        std::cout << "Result: " << a * b << "\n";
+        break;
+    case '/':
+        // Проверка деления на ноль
+        if (b == 0) {
+            std::cout << "Error: division by zero is not possible!\n";
+        }
+        else {
+            std::cout << "Result: " << a / b << "\n";
+        }
+        break;
+    case '^': {
+        // Возведение в степень через цикл
+        double result = 1.0;
+        int power = (int)b; // степень должна быть целой
+        if (power < 0) {
+            std::cout << "Error: the exponent must be positive.\n";
+        }
+        else {
+            for (int i = 0; i < power; i++) {
+                result = result * a;
+            }
+            std::cout << "Result: " << result << "\n";
+        }
+        break;
+    }
+    case '%':
+        // Остаток от деления работает только с целыми числами
+        std::cout << "Result: " << (int)a % (int)b << "\n";
+        break;
+    default:
+        std::cout << "Error: unknown operation!\n";
+        break;
+    }
+    return 0;
+}
