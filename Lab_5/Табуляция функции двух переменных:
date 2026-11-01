@@ -1,0 +1,39 @@
+#include <iostream>
+#include <iomanip>
+
+int main() {
+    double aX, bX, hX; // Для оси X
+    double aY, bY, hY; // Для оси Y
+
+    std::cout << "Enter X (start, end, step):";
+    std::cin >> aX >> bX >> hX;
+
+    std::cout << "Enter Y (start, end, step): ";
+    std::cin >> aY >> bY >> hY;
+
+    // Проверка на ошибки
+    if (aX > bX || hX <= 0 || aY > bY || hY <= 0) {
+        std::cout << "Input error!\n";
+        return 1;
+    }
+
+    std::cout << "\nMatrix of values ​​z = x^2 + y^2:\n\n";
+    std::cout << std::fixed << std::setprecision(1); // 1 знак после запятой
+
+    // ВНЕШНИЙ цикл (пробегает по Y)
+    for (double y = aY; y <= bY + 1e-9; y += hY) {
+
+        // ВНУТРЕННИЙ цикл (пробегает по X)
+        for (double x = aX; x <= bX + 1e-9; x += hX) {
+            double z = x * x + y * y; // Формула
+
+            // Выводим значение z шириной 6 символов и добавляем пробел
+            std::cout << std::setw(6) << z << " ";
+        }
+
+        // Когда внутренний цикл завершился (строка закончилась), делаем перенос
+        std::cout << "\n";
+    }
+
+    return 0;
+}
