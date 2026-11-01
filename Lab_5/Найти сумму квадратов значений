@@ -1,0 +1,36 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath> // Подключаем для функции std::sin
+
+int main() {
+    double a, b, h;
+    double sumSquares = 0; // для суммы квадратов
+
+    std::cout << "Enter the start (a), end (b), and step (h): ";
+    std::cin >> a >> b >> h;
+
+    if (a > b || h <= 0) {
+        std::cout << "Input error!\n";
+        return 1;
+    }
+
+    std::cout << "\n------------------------\n";
+    std::cout << "   x   |  y = x*sin(x)\n";
+    std::cout << "------------------------\n";
+    std::cout << std::fixed << std::setprecision(2);
+
+    for (double x = a; x <= b + 1e-9; x += h) {
+        double y = x * std::sin(x); // Считаем функцию
+
+        std::cout << std::setw(7) << x << " | " << std::setw(11) << y << "\n";
+
+        // Накапливаем сумму квадратов (y * y)
+        sumSquares = sumSquares + (y * y);
+    }
+    std::cout << "------------------------\n";
+
+    // Выводим итоговую сумму
+    std::cout << "Sum of the squares of the values: " << sumSquares << "\n";
+
+    return 0;
+}
