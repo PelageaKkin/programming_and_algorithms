@@ -1,0 +1,33 @@
+#include <iostream>
+#include <iomanip> // Для красивого вывода (setw)
+
+int main() {
+    double a, b, h;
+
+    // 1. Ввод данных
+    std::cout << "Enter the start (a), end (b), and step (h): ";
+    std::cin >> a >> b >> h;
+
+    // 2. Проверка на ошибки
+    if (a > b || h <= 0) {
+        std::cout << "Error: a must be <= b, and the step must be > 0!\n";
+        return 1;
+    }
+
+    // 3. Шапка таблицы
+    std::cout << "\n-------------------\n";
+    std::cout << "   x    |    y\n";
+    std::cout << "-------------------\n";
+    std::cout << std::fixed << std::setprecision(2); // 2 знака после запятой
+
+    // 4. Цикл табуляции
+    for (double x = a; x <= b + 1e-9; x += h) {
+        double y = -x * x + 4 * x; // Считаем функцию
+
+        // setw(7) выделяет ровно 7 символов под число, чтобы столбцы не ехали
+        std::cout << std::setw(7) << x << " | " << std::setw(7) << y << "\n";
+    }
+
+    std::cout << "-------------------\n";
+    return 0;
+}
