@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cstdlib> // Для rand() и srand()
+#include <ctime>   // Для time()
+
+int main() {
+    const int SIZE = 10; // Размер массива
+    int arr[SIZE];
+
+    // Инициализируем генератор случайных чисел
+    std::srand(std::time(nullptr));
+
+    int count = 0; // Счетчик элементов > 50
+
+    std::cout << "Array: ";
+    for (int i = 0; i < SIZE; i++) {
+        // Формула для диапазона [10; 99]
+        arr[i] = 10 + std::rand() % 90;
+        std::cout << arr[i] << " ";
+
+        // Проверяем условие
+        if (arr[i] > 50) {
+            count++;
+        }
+    }
+
+    std::cout << "\nNumber of elements greater than 50: " << count << "\n";
+
+    return 0;
+}
