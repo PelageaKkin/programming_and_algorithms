@@ -1,0 +1,42 @@
+#include <iostream>
+#include <cstdlib> // Для rand() и srand()
+#include <ctime>   // Для time()
+
+int main() {
+    const int SIZE = 20;
+    int arr[SIZE];
+
+    std::srand(std::time(nullptr));
+
+    std::cout << "Original array: ";  // выводим начальный
+    for (int i = 0; i < SIZE; i++) {
+        arr[i] = 1 + std::rand() % 100; // От 1 до 100
+        std::cout << arr[i] << " ";
+    }
+    std::cout << "\n";
+
+    // Сортируем массив по возрастанию
+    for (int i = 0; i < SIZE - 1; i++) {
+        for (int j = 0; j < SIZE - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Меняем местами
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    std::cout << "Sorted array: "; //отсортированый массив
+    for (int i = 0; i < SIZE; i++) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << "\n";
+
+    // Вычисляем медиану
+    double median = (arr[9] + arr[10]) / 2.0;
+
+    std::cout << "Median: " << median << "\n";
+
+    return 0;
+}
