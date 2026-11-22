@@ -1,0 +1,79 @@
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+#include <ctime>
+
+int main() {
+    const int SIZE = 3; // Матрица 3x3
+    int matrix[SIZE][SIZE];
+
+    std::srand(std::time(nullptr));
+
+    // Заполнение и вывод
+    std::cout << "3x3 matrix:\n";
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            matrix[i][j] = 1 + std::rand() % 100; // От 1 до 100
+            std::cout << std::setw(4) << matrix[i][j];
+        }
+        std::cout << "\n";
+    }
+
+    //  Считаем эталонную сумму - сумму первой строки
+    int targetSum = 0;
+    for (int j = 0; j < SIZE; j++) {
+        targetSum += matrix[0][j];
+    }
+
+    bool isMagic = true; // Считаем, что это магический квадрат
+
+    // Проверяем остальные строки
+    for (int i = 1; i < SIZE; i++) {
+        int rowSum = 0;
+        for (int j = 0; j < SIZE; j++) {
+            rowSum += matrix[i][j];
+        }
+        if (rowSum != targetSum) {
+            isMagic = false; // Если сумма не совпала - это не магический квадрат
+        }
+    }
+
+    // Проверяем столбцы
+    for (int j = 0; j < SIZE; j++) {
+        int colSum = 0;
+        for (int i = 0; i < SIZE; i++) {
+            colSum += matrix[i][j];
+        }
+        if (colSum != targetSum) {
+            isMagic = false;
+        }
+    }
+
+    // Проверяем главную диагональ (i == j)
+    int mainDiagSum = 0;
+    for (int i = 0; i < SIZE; i++) {
+        mainDiagSum += matrix[i][i];
+    }
+    if (mainDiagSum != targetSum) {
+        isMagic = false;
+    }
+
+    // Проверяем побочную диагональ (i + j == SIZE - 1)
+    int secDiagSum = 0;
+    for (int i = 0; i < SIZE; i++) {
+        secDiagSum += matrix[i][SIZE - 1 - i];
+    }
+    if (secDiagSum != targetSum) {
+        isMagic = false;
+    }
+
+    // Вывод результата
+    if (isMagic) {
+        std::cout << "\nYes, it's a magic square! (Sum = " << targetSum << ")\n";
+    }
+    else {
+        std::cout << "\nNo, this is an ordinary matrix.\n";
+    }
+
+    return 0;
+}
