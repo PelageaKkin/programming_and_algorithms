@@ -1,0 +1,38 @@
+#include <iostream>
+#include <iomanip> // Для красивого вывода
+
+int main() {
+    const int SIZE = 4; // Матрица 4x4
+    int matrix[SIZE][SIZE];
+
+    std::cout << "Enter the elements of a 4x4 matrix (16 numbers):\n";
+
+    // Заполнение с клавиатуры
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            std::cout << "matrix[" << i << "][" << j << "] = ";
+            std::cin >> matrix[i][j];
+        }
+    }
+
+    // Вывод всей матрицы для проверки
+    std::cout << "\nEntered matrix:\n";
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            std::cout << std::setw(4) << matrix[i][j];
+        }
+        std::cout << "\n";
+    }
+
+    // Вывод элементов выше главной диагонали
+    // Главная диагональ: i == j. Выше нее: j > i.
+    std::cout << "\nElements above the main diagonal:\n";
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = i + 1; j < SIZE; j++) { // Начинаем j с i + 1
+            std::cout << std::setw(4) << matrix[i][j];
+        }
+    }
+    std::cout << "\n";
+
+    return 0;
+}
