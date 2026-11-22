@@ -1,0 +1,39 @@
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+#include <ctime>
+
+int main() {
+    const int ROWS = 6; // Сразу делаем 6 строк, чтобы было куда добавлять
+    const int COLS = 5;
+    int matrix[ROWS][COLS];
+
+    std::srand(std::time(nullptr));
+
+    // Заполнение первых 5 строк случайными числами (1..100)
+    std::cout << "Original 5x5 matrix:\n";
+    for (int i = 0; i < 5; i++) { // Заполняем только первые 5 строк
+        for (int j = 0; j < COLS; j++) {
+            matrix[i][j] = 1 + std::rand() % 100;
+            std::cout << std::setw(4) << matrix[i][j];
+        }
+        std::cout << "\n";
+    }
+
+    // Добавление новой строки (индекс 5) с клавиатуры
+    std::cout << "\nEnter 5 numbers for a new row:\n";
+    for (int j = 0; j < COLS; j++) {
+        std::cin >> matrix[5][j]; // Записываем в 6-ю строку (индекс 5)
+    }
+
+    // Вывод обновленной матрицы
+    std::cout << "\nMatrix after adding a row:\n";
+    for (int i = 0; i < ROWS; i++) { // Теперь выводим все 6 строк
+        for (int j = 0; j < COLS; j++) {
+            std::cout << std::setw(4) << matrix[i][j];
+        }
+        std::cout << "\n";
+    }
+
+    return 0;
+}
