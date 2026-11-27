@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string text;
+
+    std::cout << "Enter a string: ";
+    std::getline(std::cin, text);
+
+    std::cout << "All substrings:\n";
+
+    // Внешний цикл: откуда начинаем вырезать 
+    for (int start = 0; start < text.length(); start++) {
+
+        // Внутренний цикл: какой длины кусок вырезаем 
+        for (int len = 1; len <= text.length() - start; len++) {
+
+            // Функция substr(начало, длина) сама вырезает нужный кусок
+            std::cout << text.substr(start, len) << "\n";
+        }
+    }
+
+    return 0;
+}
