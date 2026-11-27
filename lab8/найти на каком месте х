@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+#include <cctype> // Подключаем для std::tolower
+
+int main() {
+    std::string text;
+    int position = -1; // Если не найдем, останется -1
+
+    std::cout << "Enter a string: ";
+    std::getline(std::cin, text);
+
+    // Проходим по каждому символу
+    for (int i = 0; i < text.length(); i++) {
+        // tolower делает букву маленькой (X превращает в x)
+        if (std::tolower(text[i]) == 'x') {
+            position = i; // Запоминаем позицию
+            break;        
+        }
+    }
+
+    std::cout << "'x' character position: " << position << "\n";
+
+    return 0;
+}
