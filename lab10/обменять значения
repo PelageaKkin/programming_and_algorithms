@@ -1,0 +1,26 @@
+#include <iostream>
+
+void swapArithmetic(int& a, int& b) {
+    a = a + b; // Теперь 'a' хранит сумму
+    b = a - b; // Вычитаем 'b', получаем изначальное 'a'
+    a = a - b; // Вычитаем новое 'b', получаем изначальное 'b'
+}
+
+int main() {
+    int x, y;
+
+    // Ввод чисел
+    std::cout << "Enter first number (x): ";
+    std::cin >> x;
+    std::cout << "Enter second number (y): ";
+    std::cin >> y;
+
+    std::cout << "Before swap: x = " << x << ", y = " << y << "\n";
+
+    swapArithmetic(x, y);
+
+    // Вывод результата
+    std::cout << "After swap:  x = " << x << ", y = " << y << "\n";
+
+    return 0;
+}
