@@ -1,0 +1,27 @@
+#include <iostream>
+
+// Функция для вычисления НОК (наименьшего общего кратного)
+int lcm(int a, int b) {
+    // Найдите максимальное число, с которого следует начать поиск
+    int max = (a > b) ? a : b;
+
+    for (int i = max; ; i++) {
+        // Если число «i» делится и на «a», и на «b» без остатка, то это — НОК (наименьшее общее кратное).
+        if (i % a == 0 && i % b == 0) {
+            return i;
+        }
+    }
+}
+
+int main() {
+    int num1, num2;
+
+    std::cout << "Enter two integers: ";
+    std::cin >> num1 >> num2;
+
+    int result = lcm(num1, num2);
+
+    std::cout << "LCM of " << num1 << " and " << num2 << " is: " << result << "\n";
+
+    return 0;
+}
