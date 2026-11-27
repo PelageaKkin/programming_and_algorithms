@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cmath> // Для sqrt()
+// Возвращает количество корней (0, 1 или 2)
+int solveQuadratic(double a, double b, double c, double& x1, double& x2) {
+    double D = b * b - 4 * a * c; // Дискриминант
+
+    if (D < 0) {
+        return 0; // Действительных корней нет
+    }
+    else if (D == 0) {
+        x1 = -b / (2 * a); // Один корень
+        return 1;
+    }
+    else {
+        // Два корня
+        x1 = (-b - std::sqrt(D)) / (2 * a);
+        x2 = (-b + std::sqrt(D)) / (2 * a);
+        return 2;
+    }
+}
+
+int main() {
+    double a, b, c;
+    double x1, x2; // Переменные для хранения корней
+
+    std::cout << "Enter coefficients a, b, c: ";
+    std::cin >> a >> b >> c;
+
+    if (a == 0) {
+        std::cout << "Error: 'a' cannot be 0.\n";
+        return 1;
+    }
+
+    // Вызвать функцию
+    int count = solveQuadratic(a, b, c, x1, x2);
+
+    // Вывод результатов в зависимости от количества корней
+    if (count == 2) {
+        std::cout << "Two roots: x1 = " << x1 << ", x2 = " << x2 << "\n";
+    }
+    else if (count == 1) {
+        std::cout << "One root: x = " << x1 << "\n";
+    }
+    else {
+        std::cout << "No real roots.\n";
+    }
+
+    return 0;
+}
