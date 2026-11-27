@@ -1,0 +1,16 @@
+#include <iostream>
+#include <string>
+#include <algorithm> // Подключаем для функции std::replace
+
+int main() {
+    std::string text;
+    std::cout << "Enter a string: ";
+    std::getline(std::cin, text); // Считываем строку с пробелами
+
+    // от начала (begin) до конца (end) меняем 'a' на 'b'
+    std::replace(text.begin(), text.end(), 'a', 'b');
+
+    std::cout << "Result: " << text << "\n";
+
+    return 0;
+}
