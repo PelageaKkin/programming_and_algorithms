@@ -1,0 +1,19 @@
+#include <iostream>
+
+// Функция для вычисления среднего значения двух чисел
+double average(double a, double b) {
+    return (a + b) / 2.0;
+}
+
+int main() {
+    double num1, num2;
+
+    std::cout << "Enter two numbers: ";
+    std::cin >> num1 >> num2;
+
+    double result = average(num1, num2);
+
+    std::cout << "Average: " << result << "\n";
+
+    return 0;
+}
